@@ -1,11 +1,12 @@
-# mypctl
+# vd-lan
 
-    Options:
-            --version  Show version number 
-        -u, --up                           
-        -d, --down                         
-            --mute                         
-            --unmute                       
-        -n, --normal   75%                 
-        -m, --max      150%                
-        -h, --help     Show help           
+```
+yarn build
+node dist/deploy-curzon-ukvis96.js -h
+```
+or
+
+```
+yarn start
+```
+
