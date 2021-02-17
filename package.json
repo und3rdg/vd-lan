@@ -4,9 +4,8 @@
     "description": "Update egroll proton. Download latest release from github and put it to steam directory.",
     "main": "dist/mypctl.js.js",
     "dependencies": {
-        "@types/mustache": "^4.1.1",
         "@types/yargs": "^16.0.0",
-        "mustache": "^4.1.0",
+        "chokidar": "^3.5.1",
         "yargs": "^16.2.0"
     },
     "devDependencies": {
