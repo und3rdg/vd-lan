@@ -2,7 +2,7 @@
 
 ```
 yarn build
-node dist/deploy-curzon-ukvis96.js --help
+node dist/deploy.js --help
 ```
 or
 
