@@ -5,6 +5,7 @@
     "main": "dist/mypctl.js.js",
     "dependencies": {
         "@types/yargs": "^16.0.0",
+        "chalk": "^4.1.0",
         "chokidar": "^3.5.1",
         "yargs": "^16.2.0"
     },
