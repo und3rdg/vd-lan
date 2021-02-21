@@ -27,7 +27,7 @@ export const rsyncFlags = [
     '--exclude=node_modules/',
     '--exclude=_localwebroot',
     '--exclude=".git/"',
-    '--dry-run'
+    // '--dry-run'
 ].join(' ')
 
 export const cmd = {
