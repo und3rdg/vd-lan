@@ -31,17 +31,27 @@ const argv = yargs
         description: 'Compile with msBuild.',
         type: 'boolean',
     })
+    .option('full', {
+        alias: 'f',
+        description: 'Full build with all steps.',
+        type: 'boolean',
+    })
     .help()
-    .alias('help', 'h')
-    .argv
+    .alias('help', 'h').argv
 
-
-// If there is more than one flag, run commands in this order.
-
-if (argv.all) rsync(path.rel.src)
-if (argv.usync) run(cmd.usync)
-if (argv.nuget) run(cmd.nuget)
-if (argv.msbuild) run(cmd.msbuild)
+// run all flags
+if (argv.full) {
+    rsync(path.rel.src)
+    run(cmd.usync)
+    run(cmd.nuget)
+    run(cmd.msbuild)
+} else {
+    // If there is more than one flag, run commands in this order.
+    if (argv.all) rsync(path.rel.src)
+    if (argv.usync) run(cmd.usync)
+    if (argv.nuget) run(cmd.nuget)
+    if (argv.msbuild) run(cmd.msbuild)
+}
 
 if (argv.watch) {
     rsync(path.rel.feBuild)
@@ -49,4 +59,3 @@ if (argv.watch) {
         .watch(`${path.abs.src}${path.rel.feBuild}`, { persistent: true })
         .on('change', () => rsync(path.rel.feBuild))
 }
-
