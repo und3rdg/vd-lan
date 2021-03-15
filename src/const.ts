@@ -33,7 +33,7 @@ export const rsyncFlags = [
 export const cmd = {
     rsync: (relPath: string) =>
         `rsync ${rsyncFlags} ${path.abs.src}${relPath} ${remoteHost}:${path.abs.dest}${relPath}`,
-    usync: 'chromium "file:///home/undg/www/ui-test/index.html?direct=1&macro=umbraco/import"',
+    usync: 'brave "file:///home/undg/www/ui-test/index.html?direct=1&macro=umbraco/import"',
     msbuild: `ssh vista "cd ${path.abs.dest}${path.rel.src};${path.abs.vsDevenv} ${path.file.sln} /Build Debug"`,
     nuget: `ssh vista "cd ${path.abs.dest}${path.rel.src};nuget restore ${path.file.sln}"`,
 }
