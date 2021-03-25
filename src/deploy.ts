@@ -8,12 +8,17 @@ const argv = yargs
     .command('[options]', 'Deploy local curzon to remote host')
     .option('watch', {
         alias: 'w',
-        description: 'watch mode, only forntend/build.',
+        description: 'Watch mode, only forntend/build.',
         type: 'boolean',
     })
     .option('all', {
         alias: 'a',
-        description: 'rsync all file to compile.',
+        description: 'Rsync all file to compile.',
+        type: 'boolean',
+    })
+    .option('git', {
+        alias: 'g',
+        description: 'Rsync only files from git stash.',
         type: 'boolean',
     })
     .option('usync', {
@@ -47,11 +52,13 @@ if (argv.full) {
     run(cmd.msbuild)
 } else {
     // If there is more than one flag, run commands in this order.
+    if(argv.git) run(cmd.rsyncGitStash)
     if (argv.all) rsync(path.rel.src)
     if (argv.usync) run(cmd.usync)
     if (argv.nuget) run(cmd.nuget)
     if (argv.msbuild) run(cmd.msbuild)
 }
+
 
 if (argv.watch) {
     rsync(path.rel.feBuild)

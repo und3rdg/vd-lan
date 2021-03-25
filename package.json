@@ -2,7 +2,15 @@
     "name": "update-egroll",
     "version": "0.1.0",
     "description": "Update egroll proton. Download latest release from github and put it to steam directory.",
-    "main": "dist/mypctl.js.js",
+    "main": "dist/deploy.js",
+    "scripts": {
+        "start": "yarn build && node ./dist/deploy-curzon-ukvis96.js",
+        "dev": "nodemon --exec ts-node ./src/deploy-curzon-ukvis96.ts --watch src --ext .ts",
+        "test": "mocha -r ts-node/register src/**/*.spec.ts",
+        "test:w": "mocha --require ts-node/register --watch --watch-files src, src/**/*.spec.ts -R nyan",
+        "prebuild": "rimraf ./dist",
+        "build": "tsc"
+    },
     "dependencies": {
         "@types/yargs": "^16.0.0",
         "chalk": "^4.1.0",
@@ -19,14 +27,6 @@
         "rimraf": "^3.0.2",
         "ts-node": "^9.1.1",
         "typescript": "^4.1.3"
-    },
-    "scripts": {
-        "start": "yarn build && node ./dist/deploy-curzon-ukvis96.js",
-        "dev": "nodemon --exec ts-node ./src/deploy-curzon-ukvis96.ts --watch src --ext .ts",
-        "test": "mocha -r ts-node/register src/**/*.spec.ts",
-        "test:w": "mocha --require ts-node/register --watch --watch-files src, src/**/*.spec.ts -R nyan",
-        "prebuild": "rimraf ./dist",
-        "build": "tsc"
     },
     "keywords": [],
     "author": "undg",

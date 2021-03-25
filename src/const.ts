@@ -15,6 +15,7 @@ export const path = {
     },
     file: {
         sln: 'Vista.Digital.Curzon.sln',
+        tmpListTxt: '/tmp/rsyncFilesFromab86ab6a8b6032.txt',
     },
 }
 
@@ -33,6 +34,7 @@ export const rsyncFlags = [
 export const cmd = {
     rsync: (relPath: string) =>
         `rsync ${rsyncFlags} ${path.abs.src}${relPath} ${remoteHost}:${path.abs.dest}${relPath}`,
+    rsyncGitStash: `git -C '${path.abs.src}' status --porcelain | cut -d ' ' -f3 > ${path.file.tmpListTxt}; rsync --files-from=${path.file.tmpListTxt} ${path.abs.src} ${remoteHost}:${path.abs.dest}`,
     usync: 'brave "file:///home/undg/www/ui-test/index.html?direct=1&macro=umbraco/import"',
     msbuild: `ssh vista "cd ${path.abs.dest}${path.rel.src};${path.abs.vsDevenv} ${path.file.sln} /Build Debug"`,
     nuget: `ssh vista "cd ${path.abs.dest}${path.rel.src};nuget restore ${path.file.sln}"`,
